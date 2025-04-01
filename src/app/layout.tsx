@@ -1,12 +1,8 @@
-import Header from "@/components/Header/Header";
 import ThemeProvider from "@/components/ThemeProvider";
+import { LayoutProps } from "@/lib/types";
 import "./globals.css";
 
-type RootLayoutProps = Readonly<{
-  children: React.ReactNode;
-}>;
-
-const RootLayout = ({ children }: RootLayoutProps) => {
+const RootLayout = ({ children }: LayoutProps) => {
   return (
     <html
       lang="en"
@@ -18,9 +14,7 @@ const RootLayout = ({ children }: RootLayoutProps) => {
           defaultTheme="dark"
           enableSystem={false}
         >
-          <Header appName="NST App" />
-
-          <main className="container mx-auto px-6 py-3">{children}</main>
+          {children}
         </ThemeProvider>
       </body>
     </html>

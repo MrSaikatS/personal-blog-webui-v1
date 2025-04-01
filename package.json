@@ -1,5 +1,5 @@
 {
-  "name": "nextjs-starter-template",
+  "name": "personal-blog-webui-v1",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -34,6 +34,5 @@
     "typescript": "5"
   },
   "author": "Saikat Sardar",
-  "license": "MIT",
-  "homepage": "https://github.com/MrSaikatS/nextjs-starter-template#readme"
+  "license": "MIT"
 }
