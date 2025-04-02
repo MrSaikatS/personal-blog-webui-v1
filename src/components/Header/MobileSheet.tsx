@@ -8,6 +8,8 @@ import {
   SheetTrigger,
 } from "../ui/sheet";
 import Link from "next/link";
+import MobileAccordition from "./MobileAccordition";
+import { Separator } from "../ui/separator";
 
 const MobileSheet = () => {
   return (
@@ -17,18 +19,41 @@ const MobileSheet = () => {
           <Menu />
         </SheetTrigger>
 
-        <SheetContent>
-          <SheetHeader className="space-y-8">
+        <SheetContent className="flex w-[90%] flex-col gap-4 overflow-scroll overscroll-contain px-4">
+          <SheetHeader className="">
             <SheetTitle className="text-center text-3xl">Menu</SheetTitle>
 
-            <SheetDescription className="flex flex-col items-center justify-center gap-5 text-xl">
-              <Link href={"/"}>Home</Link>
-
-              <Link href={"/about"}>About</Link>
-
-              <Link href={"/contact"}>Conatct</Link>
-            </SheetDescription>
+            <SheetDescription className=""></SheetDescription>
           </SheetHeader>
+
+          <Link
+            className="text-xl"
+            href={"/"}
+          >
+            Home
+          </Link>
+
+          <Separator />
+
+          <MobileAccordition />
+
+          <Separator />
+
+          <Link
+            className="text-xl"
+            href={"/about"}
+          >
+            About
+          </Link>
+
+          <Separator />
+
+          <Link
+            className="text-xl"
+            href={"/contact"}
+          >
+            Contact
+          </Link>
         </SheetContent>
       </Sheet>
     </>
