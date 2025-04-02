@@ -1,9 +1,11 @@
+import Link from "next/link";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "../ui/accordion";
+import { Separator } from "../ui/separator";
 
 const MobileAccordition = () => {
   return (
@@ -14,19 +16,25 @@ const MobileAccordition = () => {
           collapsible
         >
           <AccordionItem value="item-1">
-            <AccordionTrigger className="cursor-pointer py-0 text-xl hover:no-underline">
+            <AccordionTrigger className="mb-1 cursor-pointer py-0 text-xl font-normal hover:no-underline data-[state=open]:font-bold">
               Category
             </AccordionTrigger>
 
-            <AccordionContent className="ps-3 pt-3">
-              Technology
+            <AccordionContent className="grid gap-3 ps-3 pt-3">
+              <Link href={"/"}>Technology</Link>
+
+              <Separator />
+
+              <Link href={"/"}>Review</Link>
+
+              <Separator />
+
+              <Link href={"/"}>Sports</Link>
+
+              <Separator />
+
+              <Link href={"/"}>News</Link>
             </AccordionContent>
-
-            <AccordionContent className="ps-3 pt-3">Review</AccordionContent>
-
-            <AccordionContent className="ps-3 pt-3">Sports</AccordionContent>
-
-            <AccordionContent className="ps-3 pt-3">News</AccordionContent>
           </AccordionItem>
         </Accordion>
       </div>
