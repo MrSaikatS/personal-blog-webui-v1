@@ -1,7 +1,7 @@
 import Link from "next/link";
 import ThemeToggleButton from "../ui/ThemeToggleButton";
-import { Menu } from "lucide-react";
 import DesktopMenubar from "./DesktopMenubar";
+import MobileSheet from "./MobileSheet";
 
 const Header = ({ appName }: { appName: string }) => {
   return (
@@ -37,7 +37,7 @@ const Header = ({ appName }: { appName: string }) => {
         <div className="flex items-center gap-3 lg:hidden">
           <ThemeToggleButton />
 
-          <Menu />
+          <MobileSheet />
         </div>
       </div>
     </header>
