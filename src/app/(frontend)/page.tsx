@@ -1,3 +1,5 @@
+import CategorySection from "@/components/HomeComps/CategorySection";
+import HeroSection from "@/components/HomeComps/HeroSection";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -8,11 +10,13 @@ export const metadata: Metadata = {
 const page = () => {
   return (
     <>
-      <section className="grid h-[80dvh] place-items-center">
-        <div className="bg-gradient-to-tr from-rose-600 to-violet-600 bg-clip-text p-2">
-          <span className="text-5xl font-bold text-transparent">Home page</span>
-        </div>
-      </section>
+      {/* Hero Section */}
+      <HeroSection />
+
+      {/* Category Section */}
+
+      <CategorySection />
+      <CategorySection />
     </>
   );
 };
