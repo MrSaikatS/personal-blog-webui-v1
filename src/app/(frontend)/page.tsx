@@ -1,3 +1,4 @@
+import CategorySection from "@/components/HomeComps/CategorySection";
 import HeroSection from "@/components/HomeComps/HeroSection";
 import { Metadata } from "next";
 
@@ -11,6 +12,11 @@ const page = () => {
     <>
       {/* Hero Section */}
       <HeroSection />
+
+      {/* Category Section */}
+
+      <CategorySection />
+      <CategorySection />
     </>
   );
 };
