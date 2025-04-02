@@ -6,30 +6,51 @@ import {
   MenubarMenu,
   MenubarTrigger,
 } from "../ui/menubar";
+import kyServer from "@/lib/ky/kyServer";
+import { CategoryType, ResponseType } from "@/lib/types";
 
-const DesktopMenubar = () => {
-  return (
-    <>
-      <Menubar className="cursor-pointer border-none bg-transparent shadow-none">
-        <MenubarMenu>
-          <MenubarTrigger className="group flex cursor-pointer items-center">
-            Category
-            <ChevronDown className="scale-y transition-all duration-300 ease-in-out group-data-[state=open]:scale-y-[-1]" />
-          </MenubarTrigger>
+const DesktopMenubar = async () => {
+  try {
+    const { data } = await kyServer
+      .get("category", {
+        next: { tags: ["getAllCategory"] },
+      })
+      .json<ResponseType<CategoryType[]>>();
 
-          <MenubarContent align="center">
-            <MenubarItem>Technology</MenubarItem>
+    if (data.length === 0) {
+      return null;
+    }
 
-            <MenubarItem>Review</MenubarItem>
+    return (
+      <>
+        <Menubar className="cursor-pointer border-none bg-transparent shadow-none">
+          <MenubarMenu>
+            <MenubarTrigger className="group flex cursor-pointer items-center">
+              Category
+              <ChevronDown className="scale-y transition-all duration-300 ease-in-out group-data-[state=open]:scale-y-[-1]" />
+            </MenubarTrigger>
 
-            <MenubarItem>News</MenubarItem>
+            <MenubarContent align="center">
+              {data.map((item) => {
+                return (
+                  <MenubarItem
+                    className="capitalize"
+                    key={item.id}
+                  >
+                    {item.name}
+                  </MenubarItem>
+                );
+              })}
+            </MenubarContent>
+          </MenubarMenu>
+        </Menubar>
+      </>
+    );
+  } catch (error) {
+    console.log(error);
 
-            <MenubarItem>Sport</MenubarItem>
-          </MenubarContent>
-        </MenubarMenu>
-      </Menubar>
-    </>
-  );
+    return null;
+  }
 };
 
 export default DesktopMenubar;
