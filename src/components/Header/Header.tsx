@@ -31,7 +31,7 @@ const Header = ({ appName }: { appName: string }) => {
 
           <Link href={"/about"}>About</Link>
 
-          <Link href={"/contact"}>Conatct</Link>
+          <Link href={"/contact"}>Contact</Link>
         </nav>
 
         <div className="flex items-center gap-3 lg:hidden">
