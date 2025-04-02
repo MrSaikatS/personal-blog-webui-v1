@@ -29,6 +29,7 @@ const HomeBlogCard = () => {
 
                 <div className="">32 March, 2025</div>
               </div>
+
               <Button className="cursor-pointer">View Post</Button>
             </div>
           </div>
