@@ -6,50 +6,61 @@ import {
   AccordionTrigger,
 } from "../ui/accordion";
 import { Separator } from "../ui/separator";
+import kyServer from "@/lib/ky/kyServer";
+import { CategoryType, ResponseType } from "@/lib/types";
 
-const MobileAccordition = () => {
-  const demo = [
-    { id: 1, name: "technology" },
-    { id: 2, name: "review" },
-    { id: 3, name: "sports" },
-    { id: 4, name: "news" },
-  ];
+const MobileAccordition = async () => {
+  try {
+    const { data } = await kyServer
+      .get("category", {
+        next: { tags: ["getAllCategory"] },
+      })
+      .json<ResponseType<CategoryType[]>>();
 
-  return (
-    <>
-      <div className="">
-        <Accordion
-          type="single"
-          collapsible
-        >
-          <AccordionItem value="item-1">
-            <AccordionTrigger className="mb-1 cursor-pointer py-0 text-xl font-normal hover:no-underline data-[state=open]:font-bold">
-              Category
-            </AccordionTrigger>
+    if (data.length === 0) {
+      return null;
+    }
 
-            <AccordionContent>
-              {demo.map((item) => {
-                return (
-                  <div
-                    className="grid gap-3 ps-3 pt-3"
-                    key={item.id}
-                  >
-                    <Link
-                      className="capitalize"
-                      href={"/"}
+    return (
+      <>
+        <div className="">
+          <Accordion
+            type="single"
+            collapsible
+          >
+            <AccordionItem value="item-1">
+              <AccordionTrigger className="mb-1 cursor-pointer py-0 text-xl font-normal hover:no-underline data-[state=open]:font-bold">
+                Category
+              </AccordionTrigger>
+
+              <AccordionContent>
+                {data.map((item) => {
+                  return (
+                    <div
+                      className="grid gap-3 ps-3 pt-3"
+                      key={item.id}
                     >
-                      {item.name}
-                    </Link>
-                    <Separator />
-                  </div>
-                );
-              })}
-            </AccordionContent>
-          </AccordionItem>
-        </Accordion>
-      </div>
-    </>
-  );
+                      <Link
+                        className="capitalize"
+                        href={"/"}
+                      >
+                        {item.name}
+                      </Link>
+                      <Separator />
+                    </div>
+                  );
+                })}
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+        </div>
+      </>
+    );
+  } catch (error) {
+    console.log(error);
+
+    return null;
+  }
 };
 
 export default MobileAccordition;

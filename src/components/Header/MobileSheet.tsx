@@ -19,7 +19,7 @@ const MobileSheet = () => {
           <Menu />
         </SheetTrigger>
 
-        <SheetContent className="flex w-[90%] flex-col gap-4 overflow-scroll overscroll-contain px-4">
+        <SheetContent className="flex w-[90%] flex-col gap-4 px-4">
           <SheetHeader className="">
             <SheetTitle className="text-center text-3xl">Menu</SheetTitle>
 
