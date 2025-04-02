@@ -1,5 +1,7 @@
 import Link from "next/link";
 import ThemeToggleButton from "../ui/ThemeToggleButton";
+import { Menu } from "lucide-react";
+import DesktopMenubar from "./DesktopMenubar";
 
 const Header = ({ appName }: { appName: string }) => {
   return (
@@ -8,18 +10,35 @@ const Header = ({ appName }: { appName: string }) => {
       aria-label="app-header"
     >
       <div className="container mx-auto flex items-center justify-between px-6 py-3">
-        <h1
-          className="text-2xl font-semibold"
-          aria-label="App Name"
-        >
-          {appName}
-        </h1>
+        <div className="flex items-center gap-3">
+          <Link
+            href={"/"}
+            className="text-[1.5rem] font-semibold"
+            aria-label="App Name"
+          >
+            {appName}
+          </Link>
 
-        <nav className="flex items-center gap-4">
+          <div className="hidden lg:flex">
+            <ThemeToggleButton />
+          </div>
+        </div>
+
+        <nav className="hidden gap-8 lg:flex lg:items-center">
           <Link href={"/"}>Home</Link>
 
-          <ThemeToggleButton />
+          <DesktopMenubar />
+
+          <Link href={"/about"}>About</Link>
+
+          <Link href={"/contact"}>Conatct</Link>
         </nav>
+
+        <div className="flex items-center gap-3 lg:hidden">
+          <ThemeToggleButton />
+
+          <Menu />
+        </div>
       </div>
     </header>
   );
