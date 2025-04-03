@@ -1,7 +1,7 @@
-import Image from "next/image";
-import { Card, CardContent } from "../ui/card";
-import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { Card, CardContent } from "../ui/card";
 
 const SinglePostCard = () => {
   return (
