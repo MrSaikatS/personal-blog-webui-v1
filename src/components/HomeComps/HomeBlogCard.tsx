@@ -13,7 +13,7 @@ const HomeBlogCard = () => {
             height={480}
             width={640}
             priority
-            className="h-auto w-auto object-contain"
+            className="h-auto w-auto rounded-lg object-contain"
           />
 
           <div className="flex flex-col gap-3">
@@ -29,6 +29,7 @@ const HomeBlogCard = () => {
 
                 <div className="">32 March, 2025</div>
               </div>
+
               <Button className="cursor-pointer">View Post</Button>
             </div>
           </div>

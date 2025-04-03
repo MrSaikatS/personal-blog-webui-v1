@@ -1,4 +1,7 @@
+import kyServer from "@/lib/ky/kyServer";
+import { CategoryType } from "@/lib/types";
 import { ChevronDown } from "lucide-react";
+import Link from "next/link";
 import {
   Menubar,
   MenubarContent,
@@ -6,16 +9,14 @@ import {
   MenubarMenu,
   MenubarTrigger,
 } from "../ui/menubar";
-import kyServer from "@/lib/ky/kyServer";
-import { CategoryType, ResponseType } from "@/lib/types";
 
 const DesktopMenubar = async () => {
   try {
-    const { data } = await kyServer
+    const data = await kyServer
       .get("category", {
         next: { tags: ["getAllCategory"] },
       })
-      .json<ResponseType<CategoryType[]>>();
+      .json<CategoryType[]>();
 
     if (data.length === 0) {
       return null;
@@ -34,10 +35,10 @@ const DesktopMenubar = async () => {
               {data.map((item) => {
                 return (
                   <MenubarItem
-                    className="capitalize"
+                    className="cursor-pointer capitalize"
                     key={item.id}
                   >
-                    {item.name}
+                    <Link href={"/"}>{item.name}</Link>
                   </MenubarItem>
                 );
               })}
