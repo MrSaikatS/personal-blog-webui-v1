@@ -24,7 +24,7 @@ const page = () => {
         <div className="">Dated: 25th May, 2023</div>
 
         <div className="flex items-center gap-5">
-          <div className="italic">Technology</div>
+          <div className="font-bold italic">Technology</div>
 
           <Link
             href={""}
@@ -35,7 +35,7 @@ const page = () => {
           </Link>
         </div>
 
-        <div className="flex flex-col gap-1 text-justify text-xl lg:text-2xl">
+        <div className="flex flex-col gap-1 text-justify text-base md:text-xl lg:text-2xl">
           <div className="">
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Amet
             excepturi labore, quibusdam assumenda vitae adipisci placeat. Ut
