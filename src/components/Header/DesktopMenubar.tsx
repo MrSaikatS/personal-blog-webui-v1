@@ -1,6 +1,7 @@
 import kyServer from "@/lib/ky/kyServer";
 import { CategoryType } from "@/lib/types";
 import { ChevronDown } from "lucide-react";
+import Link from "next/link";
 import {
   Menubar,
   MenubarContent,
@@ -34,10 +35,10 @@ const DesktopMenubar = async () => {
               {data.map((item) => {
                 return (
                   <MenubarItem
-                    className="capitalize"
+                    className="cursor-pointer capitalize"
                     key={item.id}
                   >
-                    {item.name}
+                    <Link href={"/"}>{item.name}</Link>
                   </MenubarItem>
                 );
               })}

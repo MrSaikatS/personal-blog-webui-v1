@@ -19,7 +19,7 @@ const CategorySection = () => {
         <div className="flex justify-end">
           <Link
             href={"/"}
-            className="border-foreground flex items-center gap-2 rounded-lg border px-5 py-2"
+            className="border-foreground flex items-center gap-2 rounded-full border px-5 py-2"
           >
             View More
             <ArrowUpRight />

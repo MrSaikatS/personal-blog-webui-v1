@@ -13,7 +13,7 @@ const HomeBlogCard = () => {
             height={480}
             width={640}
             priority
-            className="h-auto w-auto object-contain"
+            className="h-auto w-auto rounded-lg object-contain"
           />
 
           <div className="flex flex-col gap-3">
