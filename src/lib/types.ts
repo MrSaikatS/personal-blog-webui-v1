@@ -1,4 +1,6 @@
 import { ReactNode } from "react";
+import { z } from "zod";
+import { loginSchema } from "./schemas";
 
 export type LayoutProps = Readonly<{
   children: ReactNode;
@@ -9,3 +11,5 @@ export type CategoryType = {
   name: string;
   slug: string;
 };
+
+export type LoginDataType = z.infer<typeof loginSchema>;
