@@ -1,3 +1,5 @@
+import kyServer from "@/lib/ky/kyServer";
+import { CategoryType } from "@/lib/types";
 import Link from "next/link";
 import {
   Accordion,
@@ -6,16 +8,14 @@ import {
   AccordionTrigger,
 } from "../ui/accordion";
 import { Separator } from "../ui/separator";
-import kyServer from "@/lib/ky/kyServer";
-import { CategoryType, ResponseType } from "@/lib/types";
 
 const MobileAccordition = async () => {
   try {
-    const { data } = await kyServer
+    const data = await kyServer
       .get("category", {
         next: { tags: ["getAllCategory"] },
       })
-      .json<ResponseType<CategoryType[]>>();
+      .json<CategoryType[]>();
 
     if (data.length === 0) {
       return null;
