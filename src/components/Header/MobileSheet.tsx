@@ -10,6 +10,7 @@ import {
 import Link from "next/link";
 import MobileAccordition from "./MobileAccordition";
 import { Separator } from "../ui/separator";
+import MobileHeaderStudio from "../Studio/Header/MobileHeaderStudio";
 
 const MobileSheet = () => {
   return (
@@ -36,6 +37,8 @@ const MobileSheet = () => {
           <Separator />
 
           <MobileAccordition />
+
+          <MobileHeaderStudio />
 
           <Separator />
 
