@@ -15,9 +15,7 @@ import { Button } from "@/components/ui/button";
 const MobileHeaderStudio = () => {
   const pathname = usePathname();
 
-  if (pathname !== "/studio") {
-    return <></>;
-  } else
+  if (pathname === "/studio" || pathname === "/studio/create") {
     return (
       <>
         <Separator />
@@ -32,9 +30,9 @@ const MobileHeaderStudio = () => {
             </AccordionTrigger>
 
             <AccordionContent className="grid items-start gap-3 ps-3 pt-3">
-              <Link href={"/"}>Dashboard</Link>
+              <Link href={"/studio"}>Dashboard</Link>
 
-              <Link href={"/"}>Post+</Link>
+              <Link href={"/studio/create"}>Create+</Link>
 
               <Link href={"/"}>Category+</Link>
 
@@ -48,6 +46,7 @@ const MobileHeaderStudio = () => {
         </Accordion>
       </>
     );
+  } else return <></>;
 };
 
 export default MobileHeaderStudio;
