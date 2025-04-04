@@ -84,25 +84,11 @@ const LoginForm = () => {
                     <FormLabel>Password</FormLabel>
 
                     <FormControl>
-                      <div className="relative">
-                        <Input
-                          type={view ? "text" : "password"}
-                          placeholder="Enter your password"
-                          {...field}
-                        />
-
-                        {view ? (
-                          <Eye
-                            className="absolute top-2 right-2"
-                            onClick={() => setView(!view)}
-                          />
-                        ) : (
-                          <EyeOff
-                            className="absolute top-2 right-2"
-                            onClick={() => setView(!view)}
-                          />
-                        )}
-                      </div>
+                      <Input
+                        type={"password"}
+                        placeholder="Enter your password"
+                        {...field}
+                      />
                     </FormControl>
 
                     <FormMessage />

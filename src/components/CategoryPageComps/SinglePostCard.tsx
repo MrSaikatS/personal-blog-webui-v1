@@ -11,10 +11,10 @@ const SinglePostCard = () => {
           <Image
             src={"/home/blog-pic.jpg"}
             alt="Image"
-            width={640}
-            height={480}
+            width={480}
+            height={270}
             priority
-            className="h-auto w-auto rounded-lg object-contain"
+            className="aspect-video h-auto w-auto rounded-lg object-fill"
           />
 
           <div className="flex flex-col items-start gap-5">
