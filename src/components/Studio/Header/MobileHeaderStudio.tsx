@@ -34,7 +34,7 @@ const MobileHeaderStudio = () => {
 
               <Link href={"/studio/create"}>Create+</Link>
 
-              <Link href={"/"}>Category+</Link>
+              <Link href={"/studio/category"}>Category+</Link>
 
               <Link href={"/"}>Username</Link>
 

@@ -14,7 +14,7 @@ const StudioHeader = () => {
 
             <Link href={"/studio/create"}>Create+</Link>
 
-            <Link href={"/"}>Category+</Link>
+            <Link href={"/studio/category"}>Category+</Link>
           </div>
 
           <div className="flex items-center justify-start gap-5">
