@@ -1,10 +1,9 @@
 "use client";
 
+import loginHook from "@/hooks/loginHook";
 import { loginSchema } from "@/lib/schemas";
 import { LoginDataType } from "@/lib/types";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Eye, EyeOff } from "lucide-react";
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Button } from "../ui/button";
 import {
@@ -25,8 +24,6 @@ import {
 import { Input } from "../ui/input";
 
 const LoginForm = () => {
-  const [view, setView] = useState(false);
-
   const rhForm = useForm<LoginDataType>({
     resolver: zodResolver(loginSchema),
 
@@ -39,7 +36,15 @@ const LoginForm = () => {
   });
 
   const loginFormSubmit = async (flData: LoginDataType) => {
-    console.log(flData);
+    const { message, success } = await loginHook(flData);
+
+    if (!success) {
+      console.log(message);
+    }
+
+    if (success) {
+      console.log(message);
+    }
   };
 
   return (
@@ -98,7 +103,7 @@ const LoginForm = () => {
 
               <Button
                 type="submit"
-                className="w-full"
+                className="w-full cursor-pointer"
                 disabled={
                   rhForm.formState.isValid || rhForm.formState.isSubmitting
                     ? false

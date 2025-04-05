@@ -13,3 +13,5 @@ export type CategoryType = {
 };
 
 export type LoginDataType = z.infer<typeof loginSchema>;
+
+export type DefaultRequestType = { message: string };
