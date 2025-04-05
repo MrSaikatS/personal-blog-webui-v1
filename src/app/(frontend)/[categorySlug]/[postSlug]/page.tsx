@@ -17,7 +17,7 @@ const page = () => {
             width={640}
             height={480}
             priority
-            className="h-auto w-auto rounded-lg object-contain"
+            className="aspect-video h-auto w-auto rounded-lg object-fill"
           />
         </div>
 
