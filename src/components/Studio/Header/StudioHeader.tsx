@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import LogoutButton from "@/components/Footer/LogoutButton";
 import Link from "next/link";
 
 const StudioHeader = () => {
@@ -20,7 +20,7 @@ const StudioHeader = () => {
           <div className="flex items-center justify-start gap-5">
             <Link href={"/"}>Username</Link>
 
-            <Button>Logout</Button>
+            <LogoutButton />
           </div>
         </div>
       </header>
