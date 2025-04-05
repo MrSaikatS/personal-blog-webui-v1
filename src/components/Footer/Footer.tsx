@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Button } from "../ui/button";
+import LogoutButton from "./LogoutButton";
 
 const Footer = ({ appName }: { appName: string }) => {
   return (
@@ -17,7 +17,7 @@ const Footer = ({ appName }: { appName: string }) => {
           <div className="flex flex-col items-center justify-center gap-4">
             <Link href={"/auth/login"}>Login</Link>
 
-            <Button className="cursor-pointer">Logout</Button>
+            <LogoutButton />
           </div>
         </div>
       </footer>
