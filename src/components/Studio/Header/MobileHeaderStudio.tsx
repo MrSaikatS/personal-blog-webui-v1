@@ -2,15 +2,15 @@
 
 import { usePathname } from "next/navigation";
 
-import Link from "next/link";
-import { Separator } from "@/components/ui/separator";
+import LogoutButton from "@/components/Footer/LogoutButton";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
+import Link from "next/link";
 
 const MobileHeaderStudio = () => {
   const pathname = usePathname();
@@ -39,7 +39,7 @@ const MobileHeaderStudio = () => {
               <Link href={"/"}>Username</Link>
 
               <div className="">
-                <Button>Logout</Button>
+                <LogoutButton />
               </div>
             </AccordionContent>
           </AccordionItem>
