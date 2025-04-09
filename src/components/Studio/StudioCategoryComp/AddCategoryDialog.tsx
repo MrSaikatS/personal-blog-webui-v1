@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Dialog,
   DialogContent,
@@ -6,6 +8,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import CategoryForm from "./CategoryForm";
 
 const AddCategoryDialog = () => {
   return (
@@ -22,7 +25,7 @@ const AddCategoryDialog = () => {
             <DialogDescription className="hidden"></DialogDescription>
           </DialogHeader>
 
-          <div className="">Add new category</div>
+          <CategoryForm />
         </DialogContent>
       </Dialog>
     </>
