@@ -3,7 +3,7 @@ import ThemeToggleButton from "../ui/ThemeToggleButton";
 import DesktopMenubar from "./DesktopMenubar";
 import MobileSheet from "./MobileSheet";
 
-const Header = ({ appName }: { appName: string }) => {
+const Header = async ({ appName }: { appName: string }) => {
   return (
     <header
       className="border-b shadow"

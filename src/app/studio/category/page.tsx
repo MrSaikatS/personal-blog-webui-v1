@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 const page = async () => {
   const categoryData = await kyServer
     .get("category", {
-      next: { tags: ["allCategory"] },
+      next: { tags: ["getAllCategory"] },
     })
     .json<CategoryType[]>();
 

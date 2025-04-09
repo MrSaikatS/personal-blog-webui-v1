@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -8,6 +10,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import addCategoryHook from "@/hooks/addCategoryHook";
 import { categoryFormSchema } from "@/lib/schemas";
 import { CategoryFormDataType } from "@/lib/types";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -32,12 +35,16 @@ const CategoryForm = () => {
       slug: slug,
     };
 
-    console.log(cfData);
+    const { success, message } = await addCategoryHook(cfData);
 
-    try {
-      //
-    } catch (error) {
-      //
+    if (!success) {
+      console.log(message);
+    }
+
+    if (success) {
+      console.log(message);
+
+      // await addCategoryAction();
     }
   };
 
