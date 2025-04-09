@@ -1,7 +1,6 @@
 import AddCategoryDialog from "@/components/Studio/StudioCategoryComp/AddCategoryDialog";
 import StudioCategoryPostCard from "@/components/Studio/StudioCategoryComp/StudioCategoryPostCard";
-import kyServer from "@/lib/ky/kyServer";
-import { CategoryType } from "@/lib/types";
+import getAllCategoryData from "@/hooks/getAllCategoryData";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -10,11 +9,11 @@ export const metadata: Metadata = {
 };
 
 const page = async () => {
-  const categoryData = await kyServer
-    .get("category", {
-      next: { tags: ["getAllCategory"] },
-    })
-    .json<CategoryType[]>();
+  const { data } = await getAllCategoryData();
+
+  if (data === null) {
+    return <></>;
+  }
 
   return (
     <>
@@ -26,7 +25,7 @@ const page = async () => {
         </div>
 
         <div className="grid gap-3">
-          {categoryData.map((item) => {
+          {data.map((item) => {
             return (
               <StudioCategoryPostCard
                 key={item.id}

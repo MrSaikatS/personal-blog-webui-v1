@@ -1,5 +1,6 @@
 "use client";
 
+import { categoryRevAction } from "@/app/actions";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -44,7 +45,7 @@ const CategoryForm = () => {
     if (success) {
       console.log(message);
 
-      // await categoryRevAction();
+      await categoryRevAction();
     }
 
     // await categoryRevAction();
