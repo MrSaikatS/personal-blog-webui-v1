@@ -10,51 +10,54 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import addCategoryHook from "@/hooks/addCategoryHook";
+import editCategoryHook from "@/hooks/editCategoryHook";
 import { categoryFormSchema } from "@/lib/schemas";
-import { CategoryFormDataType } from "@/lib/types";
+import { CategoryFormDataType, EditCategoryProps } from "@/lib/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 
-const CategoryForm = () => {
+const CategoryEditForm = ({ info }: EditCategoryProps) => {
   const rhForm = useForm<CategoryFormDataType>({
     resolver: zodResolver(categoryFormSchema),
 
     defaultValues: {
-      name: "",
+      name: info.name,
     },
 
     mode: "all",
   });
 
-  const categoryAddFnc = async ({ name }: CategoryFormDataType) => {
-    const slug = name.toLowerCase().replaceAll(" ", "-");
+  const categoryEditFnc = async (data: CategoryFormDataType) => {
+    const slug = data.name.toLowerCase().replaceAll(" ", "-");
 
     const cfData = {
-      name: name,
+      id: info.id,
+      name: data.name,
       slug: slug,
     };
 
-    const { success, message } = await addCategoryHook(cfData);
-
-    if (!success) {
-      console.log(message);
+    if (data.name === info.name) {
+      console.log("Same");
     }
 
-    if (success) {
-      console.log(message);
+    if (data.name !== info.name) {
+      const { success, message } = await editCategoryHook(cfData);
 
-      // await categoryRevAction();
+      if (!success) {
+        console.log(message);
+      }
+
+      if (success) {
+        console.log(message);
+      }
     }
-
-    // await categoryRevAction();
   };
 
   return (
     <>
       <Form {...rhForm}>
         <form
-          onSubmit={rhForm.handleSubmit(categoryAddFnc)}
+          onSubmit={rhForm.handleSubmit(categoryEditFnc)}
           className="space-y-8"
         >
           <FormField
@@ -79,8 +82,13 @@ const CategoryForm = () => {
             <Button
               type="submit"
               className="cursor-pointer"
+              disabled={
+                rhForm.formState.isValid || rhForm.formState.isSubmitting
+                  ? false
+                  : true
+              }
             >
-              Add
+              Update
             </Button>
           </div>
         </form>
@@ -89,4 +97,4 @@ const CategoryForm = () => {
   );
 };
 
-export default CategoryForm;
+export default CategoryEditForm;

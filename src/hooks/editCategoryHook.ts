@@ -2,20 +2,21 @@ import kyClient from "@/lib/ky/kyClient";
 import { DefaultRequestType } from "@/lib/types";
 import { HTTPError } from "ky";
 
-type AddCategoryHookType = {
+type EditCategoryHookType = {
+  id: string;
   name: string;
   slug: string;
 };
 
-const addCategoryHook = async (cfData: AddCategoryHookType) => {
+const editCategoryHook = async ({ id, name, slug }: EditCategoryHookType) => {
   try {
     const req = await kyClient
-      .post("category", {
-        next: { tags: ["addCategory"] },
+      .patch(`category/${id}`, {
+        next: { tags: ["editCategory"] },
 
         json: {
-          name: cfData.name,
-          slug: cfData.slug,
+          name: name,
+          slug: slug,
         },
       })
       .json<DefaultRequestType>();
@@ -43,4 +44,4 @@ const addCategoryHook = async (cfData: AddCategoryHookType) => {
   }
 };
 
-export default addCategoryHook;
+export default editCategoryHook;

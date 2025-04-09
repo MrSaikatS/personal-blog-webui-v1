@@ -2,7 +2,7 @@
 
 import { revalidatePath, revalidateTag } from "next/cache";
 
-export const addCategoryAction = async () => {
+export const categoryRevAction = async () => {
   await revalidateTag("getAllCategory");
 
   await revalidatePath("/studio/category");

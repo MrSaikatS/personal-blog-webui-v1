@@ -1,22 +1,12 @@
 import kyClient from "@/lib/ky/kyClient";
-import { DefaultRequestType } from "@/lib/types";
+import { CategoryIdType, DefaultRequestType } from "@/lib/types";
 import { HTTPError } from "ky";
 
-type AddCategoryHookType = {
-  name: string;
-  slug: string;
-};
-
-const addCategoryHook = async (cfData: AddCategoryHookType) => {
+const deleteCategoryHook = async ({ id }: CategoryIdType) => {
   try {
     const req = await kyClient
-      .post("category", {
-        next: { tags: ["addCategory"] },
-
-        json: {
-          name: cfData.name,
-          slug: cfData.slug,
-        },
+      .delete(`category/${id}`, {
+        next: { tags: ["deleteCategory"] },
       })
       .json<DefaultRequestType>();
 
@@ -43,4 +33,4 @@ const addCategoryHook = async (cfData: AddCategoryHookType) => {
   }
 };
 
-export default addCategoryHook;
+export default deleteCategoryHook;
