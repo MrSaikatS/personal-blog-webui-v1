@@ -1,5 +1,6 @@
 "use client";
 
+import { categoryRevAction } from "@/app/actions";
 import { Button } from "@/components/ui/button";
 import deleteCategoryHook from "@/hooks/deleteCategoryHook";
 import { CategoryIdType } from "@/lib/types";
@@ -15,7 +16,7 @@ const DeleteCategory = ({ id }: CategoryIdType) => {
     if (success) {
       console.log(message);
 
-      //   await categoryRevAction();
+      await categoryRevAction();
     }
   };
 

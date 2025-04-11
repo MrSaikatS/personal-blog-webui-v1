@@ -36,7 +36,7 @@ const MobileHeaderStudio = () => {
 
               <Link href={"/studio/category"}>Category+</Link>
 
-              <Link href={"/"}>Username</Link>
+              <Link href={"/studio/profile"}>Username</Link>
 
               <div className="">
                 <LogoutButton />
