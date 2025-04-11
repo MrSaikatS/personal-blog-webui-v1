@@ -6,28 +6,29 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import CategoryForm from "./CategoryForm";
+import CategoryEditForm from "./CategoryEditForm";
+import { EditCategoryProps } from "@/lib/types";
 
-const AddCategoryDialog = () => {
+const EditCategory = ({ info }: EditCategoryProps) => {
   return (
     <>
       <Dialog>
-        <DialogTrigger className="border-foreground cursor-pointer rounded-lg border px-4 py-2">
-          Add New
+        <DialogTrigger className="border-foreground cursor-pointer rounded-lg border px-4 py-1">
+          Edit
         </DialogTrigger>
 
         <DialogContent>
           <DialogHeader className="flex flex-col items-center justify-center">
-            <DialogTitle>NEW CATEGORY</DialogTitle>
+            <DialogTitle>Update Category</DialogTitle>
 
             <DialogDescription className="hidden"></DialogDescription>
           </DialogHeader>
 
-          <CategoryForm />
+          <CategoryEditForm info={info} />
         </DialogContent>
       </Dialog>
     </>
   );
 };
 
-export default AddCategoryDialog;
+export default EditCategory;

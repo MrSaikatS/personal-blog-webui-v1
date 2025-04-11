@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { z } from "zod";
-import { loginSchema } from "./schemas";
+import { categoryFormSchema, loginSchema } from "./schemas";
 
 export type LayoutProps = Readonly<{
   children: ReactNode;
@@ -15,3 +15,16 @@ export type CategoryType = {
 export type LoginDataType = z.infer<typeof loginSchema>;
 
 export type DefaultRequestType = { message: string };
+
+export type CategoryFormDataType = z.infer<typeof categoryFormSchema>;
+
+export type CategoryIdType = {
+  id: string;
+};
+
+export type EditCategoryProps = {
+  info: {
+    id: string;
+    name: string;
+  };
+};

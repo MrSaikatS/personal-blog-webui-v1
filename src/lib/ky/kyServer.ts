@@ -6,7 +6,7 @@ const kyServer = ky.create({
   credentials: "include",
   mode: "cors",
   cache: "no-store",
-  retry: 0,
+  retry: 3,
 });
 
 export default kyServer;

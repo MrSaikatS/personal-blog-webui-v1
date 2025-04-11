@@ -1,23 +1,25 @@
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { CategoryType } from "@/lib/types";
+import DeleteCategory from "./DeleteCategory";
+import EditCategory from "./EditCategory";
 
-const StudioCategoryPostCard = () => {
+type CategoryPostCardProps = {
+  info: CategoryType;
+};
+
+const StudioCategoryPostCard = async ({ info }: CategoryPostCardProps) => {
   return (
     <>
       <Card>
         <CardContent className="flex flex-col items-center justify-center gap-3 lg:flex-row lg:justify-between">
           <div className="flex items-center gap-5">
-            <div className="">Blog Title</div>
-
-            <div className="">Blog-Category</div>
-
-            <div className="">Blog-Date</div>
+            <div className="capitalize">{info.name}</div>
           </div>
 
           <div className="flex items-center gap-5">
-            <Button className="cursor-pointer">Edit</Button>
+            <EditCategory info={info} />
 
-            <Button className="cursor-pointer">Delete</Button>
+            <DeleteCategory id={info.id} />
           </div>
         </CardContent>
       </Card>

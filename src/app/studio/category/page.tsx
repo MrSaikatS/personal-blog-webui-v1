@@ -1,5 +1,6 @@
 import AddCategoryDialog from "@/components/Studio/StudioCategoryComp/AddCategoryDialog";
 import StudioCategoryPostCard from "@/components/Studio/StudioCategoryComp/StudioCategoryPostCard";
+import getAllCategoryData from "@/hooks/getAllCategoryData";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -7,7 +8,13 @@ export const metadata: Metadata = {
   description: "Category page of Personal Blog",
 };
 
-const page = () => {
+const page = async () => {
+  const { data } = await getAllCategoryData();
+
+  if (data === null) {
+    return <></>;
+  }
+
   return (
     <>
       <section className="flex flex-col gap-8 py-10 lg:py-20">
@@ -18,9 +25,14 @@ const page = () => {
         </div>
 
         <div className="grid gap-3">
-          <StudioCategoryPostCard />
-          <StudioCategoryPostCard />
-          <StudioCategoryPostCard />
+          {data.map((item) => {
+            return (
+              <StudioCategoryPostCard
+                key={item.id}
+                info={item}
+              />
+            );
+          })}
         </div>
       </section>
     </>
