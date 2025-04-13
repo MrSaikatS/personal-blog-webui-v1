@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description: "Home page of Personal Blog",
 };
 
-const page = () => {
+const page = async () => {
   return (
     <>
       {/* Hero Section */}

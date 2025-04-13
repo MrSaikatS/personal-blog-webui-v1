@@ -28,3 +28,14 @@ export type EditCategoryProps = {
     name: string;
   };
 };
+
+export type AllPostType = {
+  id: string;
+  title: string;
+  date: string;
+  slug: string;
+  categoryId: string;
+  contentOne: string;
+  contentTwo: null | string;
+  contentThree: null | string;
+};
