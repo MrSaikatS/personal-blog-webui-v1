@@ -42,3 +42,9 @@ export type AllPostType = {
     name: string;
   };
 };
+
+export type AllCategoryType = {
+  id: string;
+  name: string;
+  slug: string;
+};

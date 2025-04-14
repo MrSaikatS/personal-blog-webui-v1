@@ -5,13 +5,13 @@ import kyServer from "@/lib/ky/kyServer";
 const HeroSection = async () => {
   const allPost = await kyServer
     .get("post/latest", {
+      next: { tags: ["latestPost"] },
+
       searchParams: {
         count: 3,
       },
     })
     .json<AllPostType[]>();
-
-  // console.log(allPost);
 
   return (
     <>
