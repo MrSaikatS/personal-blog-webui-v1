@@ -1,8 +1,15 @@
+import { AllPostType } from "@/lib/types";
 import Image from "next/image";
-import { Card, CardContent } from "../ui/card";
 import { Button } from "../ui/button";
+import { Card, CardContent } from "../ui/card";
 
-const HomeBlogCard = () => {
+type HomeBlogCardProps = {
+  info: AllPostType;
+};
+
+const HomeBlogCard = ({ info }: HomeBlogCardProps) => {
+  console.log(info);
+
   return (
     <>
       <Card>

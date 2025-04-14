@@ -38,4 +38,7 @@ export type AllPostType = {
   contentOne: string;
   contentTwo: null | string;
   contentThree: null | string;
+  category: {
+    name: string;
+  };
 };
