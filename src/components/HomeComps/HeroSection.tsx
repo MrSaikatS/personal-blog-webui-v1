@@ -1,12 +1,29 @@
+import { AllPostType } from "@/lib/types";
 import HomeBlogCard from "./HomeBlogCard";
+import kyServer from "@/lib/ky/kyServer";
 
-const HeroSection = () => {
+const HeroSection = async () => {
+  const allPost = await kyServer
+    .get("post/latest", {
+      next: { tags: ["latestPost"] },
+
+      searchParams: {
+        count: 3,
+      },
+    })
+    .json<AllPostType[]>();
+
   return (
     <>
       <section className="grid grid-cols-1 place-items-center gap-3 py-20 lg:grid-cols-3">
-        <HomeBlogCard />
-        <HomeBlogCard />
-        <HomeBlogCard />
+        {allPost.map((item) => {
+          return (
+            <HomeBlogCard
+              key={item.id}
+              info={item}
+            />
+          );
+        })}
       </section>
     </>
   );

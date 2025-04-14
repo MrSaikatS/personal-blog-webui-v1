@@ -1,8 +1,13 @@
+import { AllPostType } from "@/lib/types";
 import Image from "next/image";
-import { Card, CardContent } from "../ui/card";
 import { Button } from "../ui/button";
+import { Card, CardContent } from "../ui/card";
 
-const HomeBlogCard = () => {
+type HomeBlogCardProps = {
+  info: AllPostType;
+};
+
+const HomeBlogCard = ({ info }: HomeBlogCardProps) => {
   return (
     <>
       <Card>
@@ -18,16 +23,16 @@ const HomeBlogCard = () => {
 
           <div className="flex flex-col gap-3">
             <div className="flex flex-row items-center justify-between">
-              <div className="">Blog Title</div>
+              <div className="">{info.title}</div>
 
-              <div className="">X Admin</div>
+              <div className="">Admin</div>
             </div>
 
             <div className="flex flex-row items-start justify-between">
               <div className="flex flex-col gap-0.5">
-                <div className="">Category Name</div>
+                <div className="">{info.category.name}</div>
 
-                <div className="">32 March, 2025</div>
+                <div className="">{info.date}</div>
               </div>
 
               <Button className="cursor-pointer">View Post</Button>

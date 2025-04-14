@@ -1,19 +1,38 @@
+import kyServer from "@/lib/ky/kyServer";
+import { AllCategoryType, AllPostType } from "@/lib/types";
+import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import HomeBlogCard from "./HomeBlogCard";
-import { ArrowUpRight } from "lucide-react";
 
-const CategorySection = () => {
+type CategorySectionProps = {
+  info: AllCategoryType;
+};
+
+const CategorySection = async ({ info }: CategorySectionProps) => {
+  const allCategoryLatestPost = await kyServer
+    .get(`post/latest-category-posts/${info.id}`, {
+      next: { tags: ["categoryLatestPost"] },
+
+      searchParams: {
+        count: 3,
+      },
+    })
+    .json<AllPostType[]>();
+
   return (
     <>
       <section className="space-y-8 py-20">
-        <div className="text-center text-3xl">Technology</div>
+        <div className="text-center text-3xl">{info.name}</div>
 
         <div className="grid grid-cols-1 place-items-center gap-3 lg:grid-cols-3">
-          <HomeBlogCard />
-
-          <HomeBlogCard />
-
-          <HomeBlogCard />
+          {allCategoryLatestPost.map((item) => {
+            return (
+              <HomeBlogCard
+                key={item.id}
+                info={item}
+              />
+            );
+          })}
         </div>
 
         <div className="flex justify-end">

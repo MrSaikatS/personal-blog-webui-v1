@@ -18,7 +18,7 @@ const StudioHeader = () => {
           </div>
 
           <div className="flex items-center justify-start gap-5">
-            <Link href={"/"}>Username</Link>
+            <Link href={"/studio/profile"}>Username</Link>
 
             <LogoutButton />
           </div>
